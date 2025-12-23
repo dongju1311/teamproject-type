@@ -16,15 +16,27 @@ import Image from "next/image";
  * - imgList: 이미지 파일명 배열 (예: ["img1.jpg", "img2.png"])
  * - className: <ul>에 적용할 CSS 클래스명
  */
-export function ImageList({ imgList, className }) {
+interface ImageListProps {
+    imgList: string | string[];
+    className?: string;
+}
+
+export function ImageList({ imgList, className } : ImageListProps) {
+    const images = Array.isArray(imgList) ? imgList : [imgList];
+
     return (
-        <ul className={className}>
-            {imgList &&
-                imgList.map((img:string, idx:number) => (
-                    <li key={idx}>
-                        <Image src={`/images/${img}`} alt={img}/>
-                    </li>
-                ))}
-        </ul>
+        <div className={className}>
+            {images.map((imgSrc, index) => (
+                <div key={index} className="thumbnails-item">
+                    <Image
+                        src={imgSrc}
+                        alt={`thumbnail-${index}`}
+                        width={80}
+                        height={80}
+                        style={{ objectFit: 'cover' }}
+                    />
+                </div>
+            ))}
+        </div>
     );
 }

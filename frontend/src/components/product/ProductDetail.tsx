@@ -1,6 +1,5 @@
 "use client"
 
-import {ImageList} from "@/components/commons/ImageList";
 import '@/styles/product/productdetail.css';
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
@@ -67,9 +66,15 @@ export function ProductDetail({product} :ProductDetailProps) {
         <div className="product-detail-container" style={{paddingTop:'65px'}}>
             <div className='product-detail-top'>
                 <div className='product-detail-image-top'>
-                    <Image src={product.image} alt={product.name} className="main-image"/>
-                    <ImageList  className="product-detail-thumbnails"
-                                imgList={imgList}/>
+                    <div style={{ position: 'relative', width: '100%', height: '450px', backgroundColor: '#f9f9f9', border: '1px solid #eee' }}>
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            priority
+                        />
+                    </div>
                 </div>
 
                 {/* 1-2. 오른쪽 정보 패널 */}
@@ -134,9 +139,14 @@ export function ProductDetail({product} :ProductDetailProps) {
             <div className="tab-content">
                 <div className="tab-pane-detail">
                     <h3>DETAIL</h3>
-                    <Image src={product.image} alt={product.name} className="main-image"/>
-                    <ImageList  className="product-detail-thumbnails"
-                                imgList={imgList}/>
+                    <div style={{ position: 'relative', width: '100%', minHeight: '600px', margin: '0 auto' }}>
+                        <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            style={{ objectFit: 'contain' }}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

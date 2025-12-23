@@ -38,10 +38,10 @@ export default function RootLayout({ children } : { children: ReactNode }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <AppShell>{children}</AppShell>
-        <Script
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=13052c0aa951d8be4109ba36bf555930&autoload=false"
-            strategy="beforeInteractive" // 페이지 렌더 전에 로드
-        />
+        {/*<Script*/}
+        {/*    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=13052c0aa951d8be4109ba36bf555930&autoload=false"*/}
+        {/*    strategy="beforeInteractive" // 페이지 렌더 전에 로드*/}
+        {/*/>*/}
       </body>
     </html>
   );

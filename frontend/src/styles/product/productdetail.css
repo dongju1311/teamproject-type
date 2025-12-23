@@ -36,15 +36,22 @@
     display: flex;
     gap: 10px;
     justify-content: center;
+    margin-top: 10px;
 }
-.product-detail-thumbnails img {
+
+
+.thumbnails-item {
     width: 80px;
     height: 80px;
+    position: relative;
     border: 1px solid #ddd;
     cursor: pointer;
-    object-fit: cover;
+    overflow: hidden;
+    border-radius: 4px;
 }
-.product-detail-thumbnails img.active {
+
+/* 활성화(선택) 되었을 때 테두리 강조 */
+.thumbnails-item.active {
     border: 2px solid #000;
 }
 

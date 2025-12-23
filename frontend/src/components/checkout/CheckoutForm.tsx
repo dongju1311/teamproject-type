@@ -1,11 +1,23 @@
 "use client"
-import React from 'react';
+import React, {useEffect} from 'react';
 import '@/styles/cart/cartshipping.css'
 import useCartStore from "@/store/useCartStore";
 import {CartItem} from "@/types/Cart";
 
-export function CheckoutForm() {
-    const {orderInfo, receiverInfo} = useCartStore();
+interface CheckoutFormProps {
+    cartList:CartItem[];
+}
+
+export function CheckoutForm({cartList}:CheckoutFormProps) {
+
+    const { orderInfo, receiverInfo, showCartItem, updateTotalPrice } = useCartStore();
+
+    useEffect(() => {
+        if (cartList && cartList.length > 0) {
+            showCartItem(cartList);
+            updateTotalPrice();
+        }
+    }, [cartList, showCartItem, updateTotalPrice]);
 
     return (
         <div className="checkout-info-container">

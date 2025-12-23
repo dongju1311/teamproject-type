@@ -2,7 +2,16 @@ import React from 'react';
 import '../../styles/daumPost.css';
 import {useDaumPostcodePopup} from "react-daum-postcode";
 
-export default function DaumPost({onComplete}){
+interface AddressData {
+    postcode:string;
+    address:string;
+}
+
+interface DaumPostProps {
+    onComplete:(data:AddressData)=>void;
+}
+
+export default function DaumPost({onComplete}:DaumPostProps){
     const postcodeScriptUrl = 'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
     const open = useDaumPostcodePopup(postcodeScriptUrl);
 
@@ -26,5 +35,11 @@ export default function DaumPost({onComplete}){
         open({ onComplete: handleComplete });
     };
 
-    return <div className="find_address_button" type="button" onClick={handleClick}>주소검색</div>;
+    return <button
+        className="find_address_button"
+        type="button"
+        onClick={handleClick}
+    >
+        주소검색
+    </button>;
 };

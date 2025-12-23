@@ -36,7 +36,7 @@ export default function CartShippingInfo() {
     const handleSameCheck = (isSame) => {
         toggleSameOrderer(isSame);
     }
-    const handleAddressComplete = (data) => {
+    const handleAddressComplete = (data:{postcode:string, address:string}) => {
         setReceiverInfo('postcode',data.postcode);
         setReceiverInfo('address', data.address);
     }
