@@ -14,6 +14,7 @@ import '@/styles/travel.css';
 import '@/styles/rental.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "@/styles/travel.css";
+import '@/styles/commons.css';
 import {ReactNode} from "react";
 
 const geistSans = Geist({

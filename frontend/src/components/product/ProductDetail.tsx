@@ -1,6 +1,6 @@
 "use client"
 
-import '@/styles/product/productdetail.css';
+// import '@/styles/product/productdetail.css';
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import useCartStore from "@/store/useCartStore";
@@ -19,7 +19,7 @@ export function ProductDetail({product} :ProductDetailProps) {
     const imgList = product.image;
 
     if (!product) {
-        return <div className="loading">상품 정보를 불러오는 중입니다...</div>;
+        return <div className="text-center py-20">상품 정보를 불러오는 중입니다...</div>;
     }
 
     const handleFindStore = () => {
@@ -63,62 +63,62 @@ export function ProductDetail({product} :ProductDetailProps) {
     }
 
     return (
-        <div className="product-detail-container" style={{paddingTop:'65px'}}>
-            <div className='product-detail-top'>
-                <div className='product-detail-image-top'>
-                    <div style={{ position: 'relative', width: '100%', height: '450px', backgroundColor: '#f9f9f9', border: '1px solid #eee' }}>
+        <div className="w-full max-w-[1440px] mx-auto p-[2rem] pt-[65px]">
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-[40px]'>
+                <div className='flex flex-col gap-[10px]'>
+                    <div className='relative w-full h-[450px] bg-[#f9f9f9] border border-[#eee] overflow-hidden'>
                         <Image
                             src={product.image}
                             alt={product.name}
                             fill
-                            style={{ objectFit: 'cover' }}
+                            className='object-cover'
                             priority
                         />
                     </div>
                 </div>
 
                 {/* 1-2. 오른쪽 정보 패널 */}
-                <ul className='product-detail-info-top'>
-                    <li className='product-detail-name'>{product.name}</li>
-                    <li className='product-detail-price'>
+                <ul className='list-none p-0 m-0 flex flex-col gap-[1rem]'>
+                    <li className='text-[1.8rem] font-bold text-[#555]'>{product.name}</li>
+                    <li className='pb-[1rem] text-[1.5rem] font-medium'>
                         {product.price && `KRW ${product.price.toLocaleString()}`}
                     </li>
-                    <li className='product-detail-subtitle'>
+                    <li className='text-[1rem] text-[#555] border-b border-[#eee]'>
                         {product.subinfo}
                     </li>
 
                     {/* 컬러 선택기 */}
-                    <li className='color-selector-wrapper'>
-                        <div className='color-selector'>
-                            <span>{product.color}</span>
-                        </div>
+                    <li className='flex items-center gap-[10px] border border-[#e0e0e0] rounded-[4px]'>
+                            <span className='text-[1rem]'>{product.color}</span>
                     </li>
 
                     {/* 비교하기 버튼 */}
-                    <li className='button-wrapper product-action-buttons'>
+                    <li className='flex gap-[10px] mt-[20px]'>
                         <button type="button"
-                                className="action-button btn-secondary"
+                                className="flex-1 p-[15px_20px] text-[16px] font-bold bg-[#f0f0f0] text-[#333] border border-[#ccc] rounded-[5px] hover:bg-[#e0e0e0] transition-colors cursor-pointer"
                                 onClick={goToCompare}>
                             + 비교하기
                         </button>
                         <button type="button"
-                                className="action-button btn-secondary"
+                                className="flex-1 p-[15px_20px] text-[16px] font-bold bg-[#f0f0f0] text-[#333] border border-[#ccc] rounded-[5px] hover:bg-[#e0e0e0] transition-colors disabled:opacity-50 cursor-pointer"
                                 onClick={goToCart}
                                 disabled={!product.product_id}>
                             장바구니
                         </button>
                         <button type="button"
-                                className="action-button btn-primary"
+                                className="flex-1 p-[15px_20px] text-[16px] font-bold bg-[#007bff] text-white rounded-[5px] hover:bg-[#0056b3] transition-colors cursor-pointer"
                                 onClick={goToPurchase}>
                             구매
                         </button>
                     </li>
 
                     {/* 메인스펙 (dropdown) */}
-                    <li className='spec-wrapper'>
-                        <details className='main-spec' open>
-                            <summary>메인스펙</summary>
-                            <div className='spec-content'>
+                    <li className='border-b border-t border-[#eee]'>
+                        <details className='group' open>
+                            <summary className='p-[1rem_0] text-[1rem] font-semibold cursor-pointer list-none flex justify-center after:content-["v"] after:font-light transition-transform group-open:after:rotate-180' >
+                                메인스펙
+                            </summary>
+                            <div className='p-[1rem] bg-[#f9f9f9] text-[0.9rem] leading-[1.6]'>
                                 {
                                     product.description && product.description.map((line, index) => (
                                         <p key={index}>{line}</p>
@@ -127,19 +127,17 @@ export function ProductDetail({product} :ProductDetailProps) {
                             </div>
                         </details>
                     </li>
-
                     {/* 사이즈 / 대리점 찾기 버튼 */}
-                    <li className='button-wrapper stack'>
-                        <button type="button" className="spec-button store"
-                                onClick={handleFindStore}>대리점 찾기</button>
-                    </li>
+                        <button type="button" className="w-full p-[1rem] bg-[#f5f5f5] border border-[#e0e0e0] rounded-[4px] text-[1rem] font-semibold text-[#333] hover:bg-[#0056b3] transition-colors cursor-pointer"
+                                onClick={handleFindStore}>대리점 찾기
+                        </button>
                 </ul>
             </div>
 
-            <div className="tab-content">
-                <div className="tab-pane-detail">
-                    <h3>DETAIL</h3>
-                    <div style={{ position: 'relative', width: '100%', minHeight: '600px', margin: '0 auto' }}>
+            <div className="py-[4rem] bg-white flex justify-center">
+                <div className="w-full max-w-[1000px] text-center">
+                    <h3 className='text-[1.5rem] font-extrabold text-[#222] tracking-[0.2rem] uppercase relative mb-[3rem] after:content[""] after:block after:w-[40px] after:h-[3px] after:bg-[#007bff] after:mx-auto after:mt-[15px] after:rounded-[2px]'>DETAIL</h3>
+                    <div className='relative w-full min-h-[600px] rounded-[8px] overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.05)]'>
                         <Image
                             src={product.image}
                             alt={product.name}

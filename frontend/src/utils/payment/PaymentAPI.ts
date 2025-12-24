@@ -19,10 +19,8 @@ export const requestTossPay = async (widgets, cartList, totalPrice,receiverInfo)
             : firstItemName;
     }
     try {
-        const { userId } = JSON.parse(localStorage.getItem("loginInfo") || "{}");
 
         const orderData = {
-            // userId: userId,
             amount: totalPrice,
             orderName: formattedOrderName,
             uaddress: receiverInfo.address,
@@ -69,7 +67,6 @@ export const confirmPayment = async (paymentKey,orderId,amount,cartList=[]) => {
             : firstItemName;
     }
     const url = "/payment/confirm";
-    // const { userId } = JSON.parse(localStorage.getItem("loginInfo"));
     const data = {
         paymentKey: paymentKey,
         orderId: orderId,
@@ -81,14 +78,3 @@ export const confirmPayment = async (paymentKey,orderId,amount,cartList=[]) => {
     const response = await axiosPost(url,data);
     return response;
 }
-
-// export const findOrderList = () =>async (dispatch) => {
-//     const loginInfo = JSON.parse(localStorage.getItem("loginInfo"));
-//     if (!loginInfo || !loginInfo.userId) {
-//         return;
-//     }
-//     const url = "http://localhost:9000/payment/order";
-//     const data = {"userId":loginInfo.userId};
-//     const response = await axiosPost(url,data);
-//     showOrderItem(response);
-// }

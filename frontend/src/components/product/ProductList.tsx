@@ -1,5 +1,5 @@
 import React from 'react';
-import '@/styles/product/productList.css';
+// import '@/styles/product/productList.css';
 import Link from 'next/link';
 import {Product} from "@/types/Product";
 import Image from "next/image";
@@ -15,11 +15,11 @@ export function ProductList({products =[]}:ProductListProps) {
         .sort((a, b) => parseInt(a.pid) - parseInt(b.pid));
 
     return (
-        <div className="product-grid-container">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] p-5 mb-[150] w-full max-w-[1200px] mx-auto">
             {sortedProducts && sortedProducts.map((product) => (
-                    <Link href={`/products/${product.category}/${product.pid}`} key={product.pid} className="product-card-link">
-                        <div className="product-card">
-                            <div className="product-card-image">
+                    <Link href={`/products/${product.category}/${product.pid}`} key={product.pid} className="block no-underline text-inherit h-full">
+                        <div className="border border-[#eee] rounded-[8px] overflow-hidden bg-white h-full flex flex-col">
+                            <div className="w-full h-[200px] flex items-center justify-center bg-[#f8f8f8] relative flex-shrink-0">
                                 <Image
                                     src={product.image}
                                     alt={product.name}
@@ -29,9 +29,9 @@ export function ProductList({products =[]}:ProductListProps) {
                                     priority
                                 />
                             </div>
-                            <div className="product-card-info">
-                                <h4 className="product-name" >{product.name}</h4>
-                                <p className="product-price">{product.price.toLocaleString()}원</p>
+                            <div className="p-[15px] text-center flex-grow flex flex-col justify-center">
+                                <h4 className="text-base font-semibold whitespace-nowrap overflow-hidden text-ellipsis" >{product.name}</h4>
+                                <p className="font-bold text-[#E40046]">{product.price.toLocaleString()}원</p>
                             </div>
                         </div>
                     </Link>

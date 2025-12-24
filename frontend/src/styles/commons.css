@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@source "../../app/**/*.{js,ts,jsx,tsx}";
+@source "../../components/**/*.{js,ts,jsx,tsx}";
 /* 공통 스타일 */
 * {
     box-sizing: border-box;
@@ -205,6 +208,7 @@ a.icon-link,
     padding: 50px 100px 30px;
     font-size: 14px;
     position: relative;
+    margin-top: 100px;
 }
 
 .footer-container {
