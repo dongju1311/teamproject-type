@@ -127,7 +127,6 @@ export function ProductDetail({product} :ProductDetailProps) {
                             </div>
                         </details>
                     </li>
-                    {/* 사이즈 / 대리점 찾기 버튼 */}
                         <button type="button" className="w-full p-[1rem] bg-[#f5f5f5] border border-[#e0e0e0] rounded-[4px] text-[1rem] font-semibold text-[#333] hover:bg-[#0056b3] transition-colors cursor-pointer"
                                 onClick={handleFindStore}>대리점 찾기
                         </button>

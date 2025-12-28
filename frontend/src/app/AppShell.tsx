@@ -20,7 +20,7 @@ export default function AppShell({ children }) {
                 <>
                     <ScrollToTop />
                     <Header />
-                    <main style={{paddingTop:'62px'}}>{children}</main>
+                    <main>{children}</main>
                     <Footer />
                 </>
             )}

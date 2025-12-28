@@ -19,7 +19,7 @@ export default async function ProductsPage({params}:PageProps) {
     const product = await getProductList(category);
 
     return (
-        <div className='w-full flex flex-col items-center pt-96 gap-[35px]'>
+        <div className='w-full flex flex-col items-center !pt-[64px] gap-[35px]'>
             <div className='w-full'>
                 <h2 className='font-black text-center uppercase text-2xl' >{category || 'All Products'}</h2>
             </div>

@@ -64,7 +64,7 @@
 .map_marker_data_info {
     position: relative;
     width: 25%;
-    height: calc(100vh - 55px);
+    height: calc(100vh - 50px);
     background-color: #fff;
     color: #000;
     padding: 16px;

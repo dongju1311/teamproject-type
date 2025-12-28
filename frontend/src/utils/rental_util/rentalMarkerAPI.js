@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { axiosData } from "../../utils/dataFetch.js";
+import { axiosData } from "@/utils/dataFetch";
 
 const getCookie = (name) => {
     // JavaScript 표준 API를 사용하여 쿠키에서 XSRF-TOKEN 값을 추출
@@ -30,10 +30,10 @@ const axiosPost = async (url, formData) => {
 }
 
 export const showMarkerAPI = async () => {
-        return axiosData("/data/rentalMarker.json");
+        return axiosData("/data/rental_data/rentalMarker.json");
 }
 
-export const getRentalPayment = (priceInfo, paymentMethod) => async(dispatch, getState) => {
+export const getRentalPayment = (priceInfo, paymentMethod) => async(getState) => {
     const state = getState();
 
     const selectedStation = state.rentalData.selectedStation;
