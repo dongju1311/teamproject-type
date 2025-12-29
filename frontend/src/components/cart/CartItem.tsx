@@ -13,50 +13,58 @@ export function CartItem(){
     }
 
     return(
-        <div className="cart-item-list">
+        <div className="w-full border-t-2 border-t-[#333] border-b border-b-[#ccc]">
 
             {cartList && cartList.length > 0 ? (
                 <>
                     {cartList
                         .filter(item => item.price !== undefined)
                         .map((item)=> (
-                            <div key={item.cid} className="cart-item-row">
+                            <div key={item.cid} className="flex items-center py-6 px-2 border-b border-[#f0f0f0] last:border-b-0">
                                 <input
                                     type="checkbox"
-                                    className="cart-item-checkbox"
+                                    className="w-[20px] h-[20px] !mr-[20px] cursor-pointer accent-[#d9534f]"
                                     checked={item.checked || false}
                                     onChange={() => checkItem(item.cid)}
                                 />
                                 {item.image && (
-                                    <img src={`${item.image}`} alt={item.name} />
+                                    <img src={`${item.image}`} alt={item.name}
+                                    className='w-[130px] h-[130px] !mr-[20px] object-contain '/>
                                 )}
 
-                                <span className="item-name">{item.name && item.name}</span>
-                                <span className="item-price">
+                                <span className="flex-1 text-[1.1rem] font-semibold pr-[1rem]">{item.name && item.name}</span>
+                                <span className="w-[150px] font-semibold text-center !mr-[1.5rem]">
                                 {item.price && item.price.toLocaleString() + '원'}
                                 </span>
-                                <div className='cart-quantity'>
+                                <div className='flex items-center'>
                                     <button type='button'
-                                            onClick={()=>{item.qty > 1 && updateCart(item.cid, "-")}}>-</button>
-                                    <input type='text' value={item.qty} readOnly/>
+                                            onClick={()=>{item.qty > 1 && updateCart(item.cid, "-")}}
+                                            className='w-[30px] h-[30px] border border[#ccc] bg-[#fff] cursor-pointer text-[1.2rem] justify-center flex hover:bg-gray-50 transition-colors'>-</button>
+                                    <input type='text'
+                                           value={item.qty} readOnly
+                                            className='w-[40px] h-[30px] text-center border-t border-b border-[#ccc] outline-none'/>
                                     <button type='button'
-                                            onClick={()=> updateCart(item.cid, "+")}>+</button>
-                                    <button className='cart-remove' onClick={()=>removeCart(item.cid)}>
+                                            onClick={()=> updateCart(item.cid, "+")}
+                                            className='w-[30px] h-[30px] border border[#ccc] bg-[#fff] cursor-pointer text-[1.2rem] justify-center flex hover:bg-gray-50 transition-colors'>+</button>
+                                    <button className='w-[30px] h-[30px] ml-4 text-center text-xl text-gray-400 hover:text-red-500 transition-colors'
+                                            onClick={()=>removeCart(item.cid)}>
                                         <RiDeleteBin6Line />
                                     </button>
                                 </div>
                             </div>
                         ))}
 
-                    <div className="cart-total-summary">
-                        <span className="total-label">총 금액 :</span>
-                        <span className="total-value">{totalPrice.toLocaleString()}원</span>
+                    <div className="flex justify-start items-baseline border-t border-[#ccc] -mt-[1px] py-[2.5rem] px-[0.5rem]">
+                        <span className="text-[1.5rem] font-semibold font-[#333] !mr-[20px]">총 금액 :</span>
+                        <span className="text-[1.5rem] font-semibold font-[#333]">{totalPrice.toLocaleString()}원</span>
                     </div>
                 </>
             ) : (
-                <div className="cart-empty-message">
-                    <p>장바구니에 상품이 없습니다.</p>
-                    <button onClick={goToProduct}>자전거 구매</button>
+                <div className="text-center !py-[4rem] !px-[1rem] !-mt-[-1px] border-t-[#ccc]">
+                    <p className='text-[1.2rem] font-extrabold text-[#888] !mb-6'
+                    >장바구니에 상품이 없습니다.</p>
+                    <button className='font-semibold text-[1.1rem] text-[white] !py-[1rem] !px-[2.5rem] rounded-md  bg-[#d9534f] cursor-pointer hover:bg-[#c9302c]'
+                        onClick={goToProduct}>자전거 구매</button>
                 </div>
             )}
         </div>

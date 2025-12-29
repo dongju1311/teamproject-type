@@ -1,4 +1,4 @@
-import '@/styles/cart/cart.css';
+// import '@/styles/cart/cart.css';
 import {axiosDataPost} from "@/utils/dataFetch";
 import CartMain from "@/components/cart/CartMain";
 import {cookies} from "next/headers";

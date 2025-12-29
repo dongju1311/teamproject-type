@@ -25,10 +25,12 @@ export default function CartMain({initialCartList}:CartMainProps) {
     }, [initialCartList, showCartItem, updateTotalPrice]);
 
     return(
-        <>
-            <CartHeader />
-            <CartItemComponent />
-            <CartShippingInfo />
-        </>
+        <div className="w-full flex justify-center">
+            <div className='w-full max-w-[1024px] px-4 flex flex-col !pt-[64px] gap-[35px]'>
+                <CartHeader />
+                <CartItemComponent />
+                <CartShippingInfo />
+            </div>
+        </div>
     );
 }

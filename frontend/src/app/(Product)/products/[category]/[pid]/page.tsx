@@ -20,6 +20,8 @@ export default async function ProductDetailPage({ params } : PageProps) {
     const productData = await getProductDetail(category,pid);
 
     return (
-        <ProductDetail product={productData}/>
+        <div className='w-full flex flex-col items-center !pt-[64px] gap-[35px]'>
+            <ProductDetail product={productData}/>
+        </div>
     );
 }
